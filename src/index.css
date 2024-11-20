@@ -1,0 +1,8 @@
+.large-switch .form-check-input {
+    transform: scale(1.2); /* Increase the size of the switch */
+}
+
+.no-margin-navbar {
+    margin: 0 !important;
+    padding: 0 !important;
+}
