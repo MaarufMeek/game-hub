@@ -1,11 +1,9 @@
-import React, {useState, useEffect} from "react";
-import "./App.css";
+import React, {useState} from "react";
 import NavBar from "./components/NavBar";
-import GameGrid from "./components/GameGrid";
 
 
 const App = () => {
-    const [isDarkMode, setIsDarkMode] = useState(false);
+    const [isDarkMode, setIsDarkMode] = useState(true);
 
     const toggleTheme = () => {
         setIsDarkMode((prevMode) => !prevMode);

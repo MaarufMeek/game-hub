@@ -1,3 +1,4 @@
+
 .large-switch .form-check-input {
     transform: scale(1.2); /* Increase the size of the switch */
 }
@@ -5,4 +6,20 @@
 .no-margin-navbar {
     margin: 0 !important;
     padding: 0 !important;
+}
+
+.p-holder-height {
+    height: 20px;
+}
+
+.hr-height {
+    height: 4px;
+    border: solid white 2px;
+}
+
+.card-styles {
+    width: 100%;
+    height: 100%;
+    border: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2)
 }

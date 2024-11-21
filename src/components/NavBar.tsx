@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from '../assets/logo.webp';
-import {Navbar, Container, Button, Row, Col} from 'react-bootstrap';
+import {Col, Container, Navbar, Row} from 'react-bootstrap';
 import ColorMode from "./colorMode";
 import GameGrid from "./GameGrid";
 
@@ -14,12 +14,12 @@ const NavBar = ({onClick, darkMode}: Props) => {
     return (
         <>
             <Navbar expand="lg" style={{
-                backgroundColor: `${darkMode ? ' #296ca4' : 'gold'}`
+                backgroundColor: `${darkMode ? '#212529' : 'white'}`,
             }}
             >
-                <Container>
+                <Container fluid>
                     <Navbar.Brand href="#">
-                        <img src={logo} alt="logo" style={{height: '40px'}}/>
+                        <img src={logo} alt="logo" style={{height: '60px'}}/>
                         Navbar
                     </Navbar.Brand>
                     <ColorMode isDarkMode={darkMode} toggleTheme={onClick}/>
@@ -27,30 +27,27 @@ const NavBar = ({onClick, darkMode}: Props) => {
             </Navbar>
             <Container fluid>
                 <Row>
-                    <Col xs={12} md={12} lg={6} className="p-4"
+                    <Col lg={2} className="p-4 text-white d-none d-lg-block"
                          style={{
-                             backgroundColor: `${ darkMode ? '#343a40' : '#F3EFEFFF'}`
+                             backgroundColor: `${darkMode ? '' : 'white'}`
+                         }}
+                    >
+                        <div style={{color: `${darkMode ? 'white' : 'black'}`}}>
+                            <h3>Aside Section</h3>
+                        </div>
+                    </Col>
+
+                    <Col xs={12} md={12} lg={10} className="p-4"
+                         style={{
+                             backgroundColor: `${darkMode ? '' : 'white'}`
                          }}
                          gap="4"
                     >
                         <h2>Main Content</h2>
-                        <GameGrid/>
-                    </Col>
-
-
-                    <Col lg={6} className="p-4 text-white d-none d-lg-block"
-                         style={{
-                             backgroundColor: `${ darkMode ? '#343a40' : '#4A95E0FF'}`
-                         }}
-                    >
-                        <h3>Aside Section</h3>
-                        <p>This is the aside section, which only takes up 50% of the screen width on large and
-                            extra-large screens.</p>
+                        <GameGrid darkMode={darkMode}/>
                     </Col>
                 </Row>
             </Container>
-
-
         </>
     );
 };
