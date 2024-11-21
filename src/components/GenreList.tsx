@@ -6,9 +6,10 @@ import GenreCardSkeleton from "./GenreCardSkeleton";
 
 interface Props {
     onSelectGenre: (genre: Genre) => void;
+    selectedGenre: Genre | null;
 }
 
-const GenreList = ({onSelectGenre}: Props) => {
+const GenreList = ({onSelectGenre, selectedGenre}: Props) => {
     const {data, error, isLoading} = useGenres();
 
     if (error) return null;
@@ -24,7 +25,7 @@ const GenreList = ({onSelectGenre}: Props) => {
                 {data.map(genre =>
                     <ListGroupItem key={genre.id} as="li" className="p-0 py-1 border-0">
                         <Stack direction="horizontal"
-                               className="gap-md-2 genre-list"
+                               className={`gap-md-2 ${genre.id === selectedGenre?.id ? 'genre-list-selected' : 'genre-list'}`}
                                role="button"
                                onClick={() => onSelectGenre(genre)}
                         >

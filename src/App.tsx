@@ -31,7 +31,7 @@ const App = () => {
                     >
                         <div style={{color: `${isDarkMode ? 'white' : 'black'}`}}>
                             <h1>Genres</h1>
-                            <GenreList onSelectGenre={OnselectGenre}/>
+                            <GenreList selectedGenre={selectedGenre} onSelectGenre={OnselectGenre}/>
                         </div>
                     </Col>
 

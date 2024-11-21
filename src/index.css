@@ -42,13 +42,29 @@
     transition: 0.2s;
     border-radius: 10px;
     color: black;
-    font-weight: bold;
+    font-weight: bolder;
 
     .img-32 {
         width: 50px;
         height: 42px;
         transition: 0.3s;
     }
+}
+
+.genre-list-selected {
+    background: darkgoldenrod;
+    transition: 0.2s;
+    border-radius: 10px;
+    color: black;
+    font-weight: bolder;
+
+    .img-32 {
+        width: 50px;
+        height: 42px;
+        transition: 0.3s;
+    }
+
+
 }
 
 
