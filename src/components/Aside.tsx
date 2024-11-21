@@ -17,7 +17,6 @@ const Aside = ({darkMode}: Props) => {
                  }}
             >
                 <div style={{color: `${darkMode ? 'white' : 'black'}`}}>
-                    <h3>Aside Section</h3>
                     <GenreList/>
                 </div>
             </Col>

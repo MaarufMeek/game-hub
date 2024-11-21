@@ -16,7 +16,6 @@ const Main = ({darkMode}: Props) => {
                  }}
                  gap="4"
             >
-                <h2>Main Content</h2>
                 <GameGrid darkMode={darkMode}/>
             </Col>
         </>

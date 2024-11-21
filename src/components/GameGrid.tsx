@@ -16,7 +16,7 @@ const GameGrid = ({darkMode}: Props) => {
         <>
             {error && <p className="text-danger">{error}</p>}
             <Container>
-                <Row className="g-4">
+                <Row className="g-3">
                     {isLoading && skeletons.map(skeleton =>
                         <Col xs={12} sm={6} md={4}>
                             <GameCardSkeleton key={skeleton}/>
