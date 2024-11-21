@@ -1,12 +1,15 @@
 import useGenres from "../hooks/useGenres";
 
-
 const GenreList = () => {
-    const {genres} = useGenres()
+    const {data, error, isLoading} = useGenres();
     return (
-        <ul>
-            {genres.map(genre => <li key={genre.id}>{genre.name}</li>)}
-        </ul>
+        <>
+            {error && <p className="text-danger">{error}</p>}
+            <ul>
+                {data.map(genre => <li key={genre.id}>{genre.name}</li>)}
+            </ul>
+        </>
+
     )
 }
 
