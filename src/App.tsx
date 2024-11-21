@@ -21,7 +21,6 @@ const App = () => {
                     <Main darkMode={isDarkMode}/>
                 </Row>
             </Container>
-
         </>
     );
 };
