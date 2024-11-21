@@ -2,15 +2,17 @@ import useGames from "../hooks/useGames";
 import {Col, Container, Row} from "react-bootstrap";
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
+import {Genre} from "../hooks/useGenres";
 
 
 interface Props {
     darkMode: boolean
+    selectedGenre: Genre | null;
 }
 
-const GameGrid = ({darkMode}: Props) => {
-    const {data, error, isLoading} = useGames();
-    const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+const GameGrid = ({darkMode, selectedGenre}: Props) => {
+    const {data, error, isLoading} = useGames(selectedGenre);
+    const skeletons = [...Array(12)];
 
     return (
         <>

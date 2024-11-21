@@ -27,5 +27,33 @@
 .img-32 {
     width: 38px;
     height: 32px;
+    transition: 0.3s;
+}
+
+.genre-list {
+    cursor: pointer;
+    transition: 0.3s;
+    color: #c9b21a;
+    font-size: 18px;
+}
+
+.genre-list:hover {
+    background: darkgoldenrod;
+    transition: 0.2s;
+    border-radius: 10px;
+    color: black;
+    font-weight: bold;
+
+    .img-32 {
+        width: 50px;
+        height: 42px;
+        transition: 0.3s;
+    }
+}
+
+
+.aside-container {
+    position: sticky;
+    overflow-y: auto;
 }
 
