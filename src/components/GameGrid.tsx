@@ -3,15 +3,17 @@ import {Col, Container, Row} from "react-bootstrap";
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
 import {Genre} from "../hooks/useGenres";
+import {Platform} from "../hooks/usePlatforms";
 
 
 interface Props {
     darkMode: boolean
     selectedGenre: Genre | null;
+    selectedPlatform: Platform | null;
 }
 
-const GameGrid = ({darkMode, selectedGenre}: Props) => {
-    const {data, error, isLoading} = useGames(selectedGenre);
+const GameGrid = ({darkMode, selectedGenre, selectedPlatform}: Props) => {
+    const {data, error, isLoading} = useGames(selectedGenre, selectedPlatform);
     const skeletons = [...Array(12)];
 
     return (
@@ -26,7 +28,7 @@ const GameGrid = ({darkMode, selectedGenre}: Props) => {
                     )}
                     {data.map(game => (
                         <Col xs={12} sm={6} md={4} key={game.id}>
-                            <GameCard game={game} darkMode={darkMode}/>
+                            <GameCard key={game.id} game={game} darkMode={darkMode}/>
                         </Col>
                     ))}
                 </Row>

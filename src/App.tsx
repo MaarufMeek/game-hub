@@ -5,18 +5,23 @@ import {Genre} from "./hooks/useGenres";
 import GenreList from "./components/GenreList";
 import GameGrid from "./components/GameGrid";
 import PlatformSelector from "./components/PlatformSelector";
+import {Platform} from "./hooks/usePlatforms";
 
 
 const App = () => {
     const [isDarkMode, setIsDarkMode] = useState(true);
     const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null)
-
+    const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(null)
     const toggleTheme = () => {
         setIsDarkMode((prevMode) => !prevMode);
     };
 
     const OnselectGenre = (genre: Genre) => {
         setSelectedGenre(genre)
+    }
+
+    const onSelectPlatform = (platform: Platform) => {
+        setSelectedPlatform(platform)
     }
 
     return (
@@ -37,7 +42,6 @@ const App = () => {
                             <GenreList selectedGenre={selectedGenre} onSelectGenre={OnselectGenre}/>
                         </div>
                         <hr/>
-                        <PlatformSelector/>
                     </Col>
 
                     {/*Main*/}
@@ -49,8 +53,11 @@ const App = () => {
                     >
                         {selectedGenre ? <h1 className="mx-3">{selectedGenre.name}</h1> :
                             <h1 className="mx-3">All Games</h1>}
-                        <PlatformSelector/>
-                        <GameGrid darkMode={isDarkMode} selectedGenre={selectedGenre}/>
+                        <PlatformSelector selectedPlatform={selectedPlatform} onSelectPlatform={onSelectPlatform}/>
+                        <GameGrid darkMode={isDarkMode}
+                                  selectedGenre={selectedGenre}
+                                  selectedPlatform={selectedPlatform}
+                        />
                     </Col> </Row>
             </Container>
         </>

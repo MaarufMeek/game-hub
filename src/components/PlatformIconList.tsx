@@ -1,4 +1,4 @@
-import {Platform} from "../hooks/useGames";
+import {Platform} from "../hooks/usePlatforms";
 import {FaApple, FaLinux, FaPlaystation, FaWindows, FaXbox} from "react-icons/fa";
 import {SiNintendo} from "react-icons/si";
 import {MdPhoneAndroid, MdPhoneIphone} from "react-icons/md";

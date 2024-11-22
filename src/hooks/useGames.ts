@@ -1,11 +1,7 @@
 import useData from "./useData";
 import {Genre} from "./useGenres";
+import {Platform} from "./usePlatforms";
 
-export interface Platform {
-    id: number;
-    name: string;
-    slug: string;
-}
 
 export interface Game {
     id: number;
@@ -16,6 +12,13 @@ export interface Game {
 }
 
 
-const useGames = (SelectedGenre: Genre | null) => useData<Game>('/games',
-    {params: {genres: SelectedGenre?.id}}, [SelectedGenre?.id]);
+const useGames = (SelectedGenre: Genre | null, selectedPlatform: Platform | null) =>
+    useData<Game>('/games',
+        {
+            params: {
+                genres: SelectedGenre?.id,
+                platforms: selectedPlatform?.id
+            }
+        },
+        [SelectedGenre?.id, selectedPlatform?.id]);
 export default useGames;
