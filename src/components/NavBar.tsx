@@ -14,6 +14,9 @@ const NavBar = ({onClick, darkMode}: Props) => {
         <>
             <Navbar expand="lg" style={{
                 backgroundColor: `${darkMode ? '#212529' : 'white'}`,
+                position: 'sticky',
+                top: '0',
+                zIndex: '1000'
             }}
             >
                 <Container fluid>

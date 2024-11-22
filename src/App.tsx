@@ -4,6 +4,7 @@ import {Col, Container, Row} from "react-bootstrap";
 import {Genre} from "./hooks/useGenres";
 import GenreList from "./components/GenreList";
 import GameGrid from "./components/GameGrid";
+import PlatformSelector from "./components/PlatformSelector";
 
 
 const App = () => {
@@ -26,13 +27,17 @@ const App = () => {
                     {/*Aside*/}
                     <Col lg={2} className="p-4 text-white d-none d-lg-block"
                          style={{
-                             backgroundColor: `${isDarkMode ? '' : 'white'}`
+                             backgroundColor: `${isDarkMode ? '' : 'white'}`,
+                             position: "sticky",
+                             top: '30px'
                          }}
                     >
                         <div style={{color: `${isDarkMode ? 'white' : 'black'}`}}>
                             <h1>Genres</h1>
                             <GenreList selectedGenre={selectedGenre} onSelectGenre={OnselectGenre}/>
                         </div>
+                        <hr/>
+                        <PlatformSelector/>
                     </Col>
 
                     {/*Main*/}
@@ -44,6 +49,7 @@ const App = () => {
                     >
                         {selectedGenre ? <h1 className="mx-3">{selectedGenre.name}</h1> :
                             <h1 className="mx-3">All Games</h1>}
+                        <PlatformSelector/>
                         <GameGrid darkMode={isDarkMode} selectedGenre={selectedGenre}/>
                     </Col> </Row>
             </Container>

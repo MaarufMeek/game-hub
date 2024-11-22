@@ -67,9 +67,19 @@
 
 }
 
-
 .aside-container {
     position: sticky;
     overflow-y: auto;
 }
+
+/* Smooth fade-in effect for the dropdown menu */
+.dropdown-menu {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.dropdown-menu.show {
+    opacity: 1;
+}
+
 
