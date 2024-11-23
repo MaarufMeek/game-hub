@@ -11,7 +11,7 @@ const PlatformSelector = ({onSelectPlatform, selectedPlatform}: Props) => {
 
     if (error) return null;
     return (
-        <Dropdown className="mx-2 my-3">
+        <Dropdown>
             <Dropdown.Toggle
                 className="fw-bold"
                 variant="success">{selectedPlatform?.name || "Platforms"}

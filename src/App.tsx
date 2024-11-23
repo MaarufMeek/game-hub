@@ -1,11 +1,12 @@
 import React, {useState} from "react";
 import NavBar from "./components/NavBar";
-import {Col, Container, Row} from "react-bootstrap";
+import {Col, Container, Row, Stack} from "react-bootstrap";
 import {Genre} from "./hooks/useGenres";
 import GenreList from "./components/GenreList";
 import GameGrid from "./components/GameGrid";
 import PlatformSelector from "./components/PlatformSelector";
 import {Platform} from "./hooks/usePlatforms";
+import SortSelector from "./components/SortSelector";
 
 export interface GameQuery {
     genre: Genre | null;
@@ -57,7 +58,11 @@ const App = () => {
                     >
                         {gameQuery.genre ? <h1 className="mx-3">{gameQuery.genre.name}</h1> :
                             <h1 className="mx-3">All Games</h1>}
-                        <PlatformSelector selectedPlatform={gameQuery.platform} onSelectPlatform={onSelectPlatform}/>
+                        <Stack direction="horizontal" gap={4} className="mb-4 px-3">
+                            <PlatformSelector selectedPlatform={gameQuery.platform}
+                                              onSelectPlatform={onSelectPlatform}/>
+                            <SortSelector/>
+                        </Stack>
                         <GameGrid darkMode={isDarkMode}
                                   gameQuery={gameQuery}
                         />
