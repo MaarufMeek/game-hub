@@ -2,18 +2,16 @@ import useGames from "../hooks/useGames";
 import {Col, Container, Row} from "react-bootstrap";
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
-import {Genre} from "../hooks/useGenres";
-import {Platform} from "../hooks/usePlatforms";
+import {GameQuery} from "../App";
 
 
 interface Props {
-    darkMode: boolean
-    selectedGenre: Genre | null;
-    selectedPlatform: Platform | null;
+    darkMode: boolean;
+    gameQuery: GameQuery | null;
 }
 
-const GameGrid = ({darkMode, selectedGenre, selectedPlatform}: Props) => {
-    const {data, error, isLoading} = useGames(selectedGenre, selectedPlatform);
+const GameGrid = ({darkMode, gameQuery}: Props) => {
+    const {data, error, isLoading} = useGames(gameQuery);
     const skeletons = [...Array(12)];
 
     return (

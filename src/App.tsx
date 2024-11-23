@@ -7,21 +7,25 @@ import GameGrid from "./components/GameGrid";
 import PlatformSelector from "./components/PlatformSelector";
 import {Platform} from "./hooks/usePlatforms";
 
+export interface GameQuery {
+    genre: Genre | null;
+    platform: Platform | null;
+}
 
 const App = () => {
     const [isDarkMode, setIsDarkMode] = useState(true);
-    const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null)
-    const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(null)
+    const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery)
+
     const toggleTheme = () => {
         setIsDarkMode((prevMode) => !prevMode);
     };
 
     const OnselectGenre = (genre: Genre) => {
-        setSelectedGenre(genre)
+        setGameQuery({...gameQuery, genre})
     }
 
     const onSelectPlatform = (platform: Platform) => {
-        setSelectedPlatform(platform)
+        setGameQuery({...gameQuery, platform})
     }
 
     return (
@@ -39,7 +43,7 @@ const App = () => {
                     >
                         <div style={{color: `${isDarkMode ? 'white' : 'black'}`}}>
                             <h1>Genres</h1>
-                            <GenreList selectedGenre={selectedGenre} onSelectGenre={OnselectGenre}/>
+                            <GenreList selectedGenre={gameQuery.genre} onSelectGenre={OnselectGenre}/>
                         </div>
                         <hr/>
                     </Col>
@@ -51,12 +55,11 @@ const App = () => {
                          }}
                          gap="4"
                     >
-                        {selectedGenre ? <h1 className="mx-3">{selectedGenre.name}</h1> :
+                        {gameQuery.genre ? <h1 className="mx-3">{gameQuery.genre.name}</h1> :
                             <h1 className="mx-3">All Games</h1>}
-                        <PlatformSelector selectedPlatform={selectedPlatform} onSelectPlatform={onSelectPlatform}/>
+                        <PlatformSelector selectedPlatform={gameQuery.platform} onSelectPlatform={onSelectPlatform}/>
                         <GameGrid darkMode={isDarkMode}
-                                  selectedGenre={selectedGenre}
-                                  selectedPlatform={selectedPlatform}
+                                  gameQuery={gameQuery}
                         />
                     </Col> </Row>
             </Container>
