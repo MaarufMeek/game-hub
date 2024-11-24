@@ -34,6 +34,7 @@ const PlatformIconList = ({platform, darkMode}: Props) => {
         >
             {platform.map((platform) => {
                 const Icon = iconMap[platform.slug]; // Get the component
+                if (!Icon) return '';
                 return <Icon key={platform.slug}/>; // Render the component
             })}
         </div>

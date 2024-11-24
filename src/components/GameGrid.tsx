@@ -16,14 +16,13 @@ const GameGrid = ({darkMode, gameQuery}: Props) => {
 
     return (
         <>
-            {error && <p className="text-danger">{error}</p>}
             <Container>
                 <Row className="g-3">
-                    {isLoading && skeletons.map(skeleton =>
-                        <Col xs={12} sm={6} md={4}>
-                            <GameCardSkeleton key={skeleton}/>
+                    {isLoading && skeletons.map((_, index) => (
+                        <Col xs={12} sm={6} md={4} key={index}>
+                            <GameCardSkeleton/>
                         </Col>
-                    )}
+                    ))}
                     {data.map(game => (
                         <Col xs={12} sm={6} md={4} key={game.id}>
                             <GameCard key={game.id} game={game} darkMode={darkMode}/>
@@ -34,5 +33,6 @@ const GameGrid = ({darkMode, gameQuery}: Props) => {
         </>
     );
 };
+
 
 export default GameGrid;
