@@ -8,9 +8,10 @@ import SearchInput from "./SearchInput";
 interface Props {
     onClick: () => void;
     darkMode: boolean;
+    onSearchText: (searchText: string) => void;
 }
 
-const NavBar = ({onClick, darkMode}: Props) => {
+const NavBar = ({onClick, darkMode, onSearchText}: Props) => {
     return (
         <Navbar
             expand="lg"
@@ -32,7 +33,7 @@ const NavBar = ({onClick, darkMode}: Props) => {
 
                     {/* SearchInput */}
                     <Col xs={7} md={7} lg={10} className="my-2 my-md-0">
-                        <SearchInput/>
+                        <SearchInput onSearch={onSearchText}/>
                     </Col>
 
                     {/* Theme and Icons */}
