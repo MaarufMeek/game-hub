@@ -76,6 +76,37 @@ body {
     overflow-y: auto;
 }
 
+.search-input {
+    font-size: 18px;
+
+}
+
+.custom-search {
+    border-radius: 24px;
+    overflow: hidden;
+    background: #3a3a3d;
+}
+
+.custom-search .input-group-text {
+    background: #353538;
+    border: none;
+    color: #ffffff;
+}
+
+.custom-search .form-control {
+    background: #3a3a3d;
+    border: none;
+    color: #ffffff;
+    padding: 12px 16px;
+    box-shadow: none;
+}
+
+.custom-search:focus-within {
+    box-shadow: 0 0 1px 1px #3a5c81;
+    border: 1px solid #2f547c;
+}
+
+
 
 
 
