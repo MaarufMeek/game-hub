@@ -17,10 +17,8 @@ const NavBar = ({onClick, darkMode, onSearchText}: Props) => {
             expand="lg"
             style={{
                 backgroundColor: `${darkMode ? "#212529" : "white"}`,
-                position: "sticky",
-                top: "0",
-                zIndex: "1000",
             }}
+            className="nav-content"
         >
             <Container fluid>
                 <Row className="align-items-center w-100">

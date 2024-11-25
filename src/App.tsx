@@ -7,6 +7,7 @@ import GameGrid from "./components/GameGrid";
 import PlatformSelector from "./components/PlatformSelector";
 import {Platform} from "./hooks/usePlatforms";
 import SortSelector from "./components/SortSelector";
+import GameHeading from "./components/GameHeading";
 
 export interface GameQuery {
     genre: Genre | null;
@@ -58,28 +59,33 @@ const App = () => {
                         </div>
                         <hr/>
                     </Col>
-
-                    {/*Main*/}
-                    <Col xs={12} md={12} lg={10} className="p-4"
-                         style={{
-                             backgroundColor: `${isDarkMode ? '' : 'white'}`
-                         }}
-                         gap="4"
+                    {/* Main Content Area */}
+                    <Col
+                        xs={12}
+                        md={12}
+                        lg={10}
+                        className="p-4"
+                        style={{
+                            backgroundColor: `${isDarkMode ? "" : "white"}`,
+                        }}
                     >
-                        {gameQuery.genre ? <h1 className="mx-3">{gameQuery.genre.name}</h1> :
-                            <h1 className="mx-3">All Games</h1>}
-                        <Stack direction="horizontal" gap={4} className="mb-4 px-3">
-                            <PlatformSelector selectedPlatform={gameQuery.platform}
-                                              onSelectPlatform={onSelectPlatform}/>
-                            <SortSelector
-                                onSelectSortOder={onSelectSort}
-                                sortOrder={gameQuery.sortOrder}
-                            />
-                        </Stack>
-                        <GameGrid darkMode={isDarkMode}
-                                  gameQuery={gameQuery}
-                        />
-                    </Col> </Row>
+                        <Container fluid className="d-flex flex-column align-items-start p-0">
+                            <GameHeading gameQuery={gameQuery}/>
+                            <Stack direction="horizontal" gap={4} className="mb-4">
+                                <PlatformSelector
+                                    selectedPlatform={gameQuery.platform}
+                                    onSelectPlatform={onSelectPlatform}
+                                />
+                                <SortSelector
+                                    onSelectSortOder={onSelectSort}
+                                    sortOrder={gameQuery.sortOrder}
+                                />
+                            </Stack>
+                            <GameGrid darkMode={isDarkMode} gameQuery={gameQuery}/>
+                        </Container>
+                    </Col>
+
+                </Row>
             </Container>
         </>
     );
