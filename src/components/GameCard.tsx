@@ -18,7 +18,7 @@ const GameCard = ({game, darkMode}: Props) => {
                 variant="top"
                 src={getCroppedImageUrl(game.background_image)}
                 style={{
-                    height: '80%', // Start with zero height
+                    height: '100%', // Start with zero height
                     paddingTop: '0', // Aspect ratio of 16:9
                     objectFit: 'cover',
                     width: '100%', // Ensure full width

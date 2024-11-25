@@ -54,10 +54,8 @@ const App = () => {
                          }}
                     >
                         <div style={{color: `${isDarkMode ? 'white' : 'black'}`}}>
-                            <h1>Genres</h1>
                             <GenreList selectedGenre={gameQuery.genre} onSelectGenre={OnselectGenre}/>
                         </div>
-                        <hr/>
                     </Col>
                     {/* Main Content Area */}
                     <Col
