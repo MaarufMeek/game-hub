@@ -30,7 +30,7 @@ const PlatformIconList = ({platform, darkMode}: Props) => {
             flexWrap: "wrap"
         }}
 
-             className="mt-3 overflow-auto"
+             className="overflow-auto"
         >
             {platform.map((platform) => {
                 const Icon = iconMap[platform.slug]; // Get the component

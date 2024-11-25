@@ -35,6 +35,13 @@ body {
     object-fit: cover;
 }
 
+.card-img {
+    height: 100%;
+    padding-top: 0;
+    object-fit: cover;
+    width: 100%;
+}
+
 .genre-list {
     cursor: pointer;
     transition: 0.3s;

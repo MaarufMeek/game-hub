@@ -17,17 +17,11 @@ const GameCard = ({game, darkMode}: Props) => {
             <Card.Img
                 variant="top"
                 src={getCroppedImageUrl(game.background_image)}
-                style={{
-                    height: '100%', // Start with zero height
-                    paddingTop: '0', // Aspect ratio of 16:9
-                    objectFit: 'cover',
-                    width: '100%', // Ensure full width
-                }}
+                className="card-img"
             />
 
             <Card.Body>
-                <Card.Title>{game.name}</Card.Title>
-                <Stack direction="horizontal" className="align-items-center justify-content-between">
+                <Stack direction="horizontal" className="align-items-center justify-content-between mb-3">
                     <PlatformIconList
                         platform={game.parent_platforms
                             .map((p) => p.platform)}
@@ -35,6 +29,7 @@ const GameCard = ({game, darkMode}: Props) => {
                     />
                     <CriticScore score={game.metacritic}/>
                 </Stack>
+                <Card.Title>{game.name}</Card.Title>
                 {/*<Button variant="primary">Go somewhere</Button>*/}
             </Card.Body>
         </Card>
