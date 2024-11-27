@@ -4,13 +4,14 @@ import {SiNintendo} from "react-icons/si";
 import {MdPhoneAndroid, MdPhoneIphone} from "react-icons/md";
 import {BsGlobe} from "react-icons/bs";
 import {IconType} from "react-icons";
+import {useTheme} from "./ThemeContext";
 
 interface Props {
     platform: Platform [];
-    darkMode: boolean;
 }
 
-const PlatformIconList = ({platform, darkMode}: Props) => {
+const PlatformIconList = ({platform}: Props) => {
+    const {isDarkMode} = useTheme();
     const iconMap: { [key: string]: IconType } = {
         pc: FaWindows,
         playstation: FaPlaystation,
@@ -26,7 +27,7 @@ const PlatformIconList = ({platform, darkMode}: Props) => {
         <div style={{
             display: "flex",
             gap: "15px",
-            color: `${darkMode ? '#C59E23FF' : '#071841'}`,
+            color: `${isDarkMode ? '#C59E23FF' : 'black'}`,
             flexWrap: "wrap"
         }}
 

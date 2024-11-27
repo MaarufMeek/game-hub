@@ -24,7 +24,7 @@ const GameGrid = ({darkMode, gameQuery}: Props) => {
                     ))}
                 {data.map((game) => (
                     <Col xs={12} sm={6} md={4} xlg={3} key={game.id} className="h-100">
-                        <GameCard key={game.id} game={game} darkMode={darkMode}/>
+                        <GameCard key={game.id} game={game}/>
                     </Col>
                 ))}
             </Row>

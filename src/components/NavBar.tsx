@@ -4,19 +4,19 @@ import {Col, Container, Navbar, Row, Stack} from "react-bootstrap";
 import ColorMode from "./colorMode";
 import {FaMoon, FaSun} from "react-icons/fa";
 import SearchInput from "./SearchInput";
+import {useTheme} from "./ThemeContext";
 
 interface Props {
-    onClick: () => void;
-    darkMode: boolean;
     onSearchText: (searchText: string) => void;
 }
 
-const NavBar = ({onClick, darkMode, onSearchText}: Props) => {
+const NavBar = ({onSearchText}: Props) => {
+    const {isDarkMode, toggleTheme} = useTheme();
     return (
         <Navbar
             expand="lg"
             style={{
-                backgroundColor: `${darkMode ? "#212529" : "white"}`,
+                backgroundColor: `${isDarkMode ? "#212529" : "#198654"}`,
             }}
             className="nav-content"
         >
@@ -37,11 +37,11 @@ const NavBar = ({onClick, darkMode, onSearchText}: Props) => {
                     {/* Theme and Icons */}
                     <Col xs={3} md={3} lg={1} className="text-end">
                         <Stack direction="horizontal" gap={3} className="justify-content-end">
-                            <ColorMode isDarkMode={darkMode} toggleTheme={onClick}/>
-                            {darkMode ? (
+                            <ColorMode/>
+                            {isDarkMode ? (
                                 <FaMoon color="goldenrod" size={20}/>
                             ) : (
-                                <FaSun color="darkblue" size={20}/>
+                                <FaSun color="#e6f8eb" size={30}/>
                             )}
                         </Stack>
                     </Col>

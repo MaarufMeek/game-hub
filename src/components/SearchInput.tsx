@@ -1,6 +1,7 @@
 import React, {useRef} from "react";
 import {Form, InputGroup} from "react-bootstrap";
 import {FaSearch} from "react-icons/fa";
+import {useTheme} from "./ThemeContext";
 
 interface Props {
     onSearch: (searchText: string) => void;
@@ -8,6 +9,7 @@ interface Props {
 
 const SearchInput = ({onSearch}: Props) => {
     const ref = useRef<HTMLInputElement>(null)
+    const {isDarkMode} = useTheme();
     return (
         <Form onSubmit={(event) => {
             event.preventDefault();
@@ -22,6 +24,10 @@ const SearchInput = ({onSearch}: Props) => {
                     type="search"
                     placeholder="Search games..."
                     className="search-input"
+                    style={{
+                        background: isDarkMode ? '' : '#e6f8eb',
+                        color: isDarkMode ? 'white' : 'black',
+                    }}
                 />
             </InputGroup>
         </Form>

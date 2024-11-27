@@ -3,15 +3,17 @@ import {Card, Stack} from "react-bootstrap";
 import PlatformIconList from "./PlatformIconList";
 import CriticScore from "./CriticScore";
 import getCroppedImageUrl from "../services/image-urls";
+import {useTheme} from "./ThemeContext";
 
 interface Props {
     game: Game;
-    darkMode: boolean
 }
 
-const GameCard = ({game, darkMode}: Props) => {
+const GameCard = ({game}: Props) => {
+    const {isDarkMode} = useTheme();
     return (
-        <Card style={{backgroundColor: `${darkMode ? '#30343f' : '#caf0f8'}`}}
+        <Card
+            style={{backgroundColor: `${isDarkMode ? '#282c34' : '#92e6a7'}`}}
               className="card-styles"
         >
             <Card.Img
@@ -21,11 +23,12 @@ const GameCard = ({game, darkMode}: Props) => {
             />
 
             <Card.Body>
-                <Stack direction="horizontal" className="align-items-center justify-content-between mb-3">
+                <Stack direction="horizontal"
+                       className="align-items-center justify-content-between mb-3"
+                >
                     <PlatformIconList
                         platform={game.parent_platforms
                             .map((p) => p.platform)}
-                        darkMode={darkMode}
                     />
                     <CriticScore score={game.metacritic}/>
                 </Stack>

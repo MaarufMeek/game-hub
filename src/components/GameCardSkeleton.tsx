@@ -2,12 +2,14 @@ import React from 'react';
 import Placeholder from 'react-bootstrap/Placeholder';
 import Card from 'react-bootstrap/Card';
 import {Stack} from "react-bootstrap";
+import {useTheme} from "./ThemeContext";
 
 const GameCardSkeleton = () => {
+    const {isDarkMode} = useTheme();
 
     return (
-        <Card style={{width: '100%', height: '100%'}}>
-            <Card.Body style={{marginTop: '150px'}}>
+        <Card className="card-skeleton" style={{background: isDarkMode ? "#282c34" : "#c9eef6"}}>
+            <Card.Body style={{marginTop: '185px'}}>
                 <hr className="hr-height rounded"/>
                 <Placeholder as={Card.Text} animation="glow">
                     <Stack direction="horizontal"

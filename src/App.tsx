@@ -8,6 +8,8 @@ import PlatformSelector from "./components/PlatformSelector";
 import {Platform} from "./hooks/usePlatforms";
 import SortSelector from "./components/SortSelector";
 import GameHeading from "./components/GameHeading";
+import Clock from "./components/Clock";
+import {useTheme} from "./components/ThemeContext";
 
 export interface GameQuery {
     genre: Genre | null;
@@ -17,43 +19,41 @@ export interface GameQuery {
 }
 
 const App = () => {
-    const [isDarkMode, setIsDarkMode] = useState(true);
-    const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery)
-
-    const toggleTheme = () => {
-        setIsDarkMode((prevMode) => !prevMode);
-    };
+    const {isDarkMode} = useTheme();
+    const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
 
     const OnselectGenre = (genre: Genre) => {
-        setGameQuery({...gameQuery, genre})
-    }
+        setGameQuery({...gameQuery, genre});
+    };
 
     const onSelectPlatform = (platform: Platform) => {
-        setGameQuery({...gameQuery, platform})
-    }
+        setGameQuery({...gameQuery, platform});
+    };
 
     const onSelectSort = (sortOrder: string) => {
-        setGameQuery({...gameQuery, sortOrder})
-    }
+        setGameQuery({...gameQuery, sortOrder});
+    };
 
     const onSearchText = (searchText: string) => {
-        setGameQuery({...gameQuery, searchText})
-    }
+        setGameQuery({...gameQuery, searchText});
+    };
 
     return (
         <>
-            <NavBar onClick={toggleTheme} darkMode={isDarkMode} onSearchText={onSearchText}/>
+            <NavBar onSearchText={onSearchText}/>
             <Container fluid>
                 <Row>
                     {/*Aside*/}
-                    <Col lg={2} className="p-4 text-white d-none d-lg-block"
-                         style={{
-                             backgroundColor: `${isDarkMode ? '' : 'white'}`,
-                             position: "sticky",
-                             top: '30px'
-                         }}
+                    <Col
+                        lg={2}
+                        className="p-4 text-white d-none d-lg-block"
+                        style={{
+                            backgroundColor: isDarkMode ? "" : "#e6f8eb",
+                            position: "sticky",
+                            top: "30px",
+                        }}
                     >
-                        <div style={{color: `${isDarkMode ? 'white' : 'black'}`}}>
+                        <div style={{color: isDarkMode ? "white" : "black"}}>
                             <GenreList selectedGenre={gameQuery.genre} onSelectGenre={OnselectGenre}/>
                         </div>
                     </Col>
@@ -64,25 +64,22 @@ const App = () => {
                         lg={10}
                         className="p-4"
                         style={{
-                            backgroundColor: `${isDarkMode ? "" : "white"}`,
+                            backgroundColor: isDarkMode ? "" : "#e6f8eb",
                         }}
                     >
                         <Container fluid className="d-flex flex-column align-items-start p-0">
                             <GameHeading gameQuery={gameQuery}/>
-                            <Stack direction="horizontal" gap={4} className="mb-4">
-                                <PlatformSelector
-                                    selectedPlatform={gameQuery.platform}
-                                    onSelectPlatform={onSelectPlatform}
-                                />
-                                <SortSelector
-                                    onSelectSortOder={onSelectSort}
-                                    sortOrder={gameQuery.sortOrder}
-                                />
+                            <Stack direction="horizontal" gap={4} className="mb-3">
+                                <PlatformSelector selectedPlatform={gameQuery.platform}
+                                                  onSelectPlatform={onSelectPlatform}/>
+                                <SortSelector onSelectSortOder={onSelectSort} sortOrder={gameQuery.sortOrder}/>
+                                <div className="ms-auto">
+                                    <Clock/>
+                                </div>
                             </Stack>
                             <GameGrid darkMode={isDarkMode} gameQuery={gameQuery}/>
                         </Container>
                     </Col>
-
                 </Row>
             </Container>
         </>
