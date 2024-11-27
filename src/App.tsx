@@ -8,7 +8,6 @@ import PlatformSelector from "./components/PlatformSelector";
 import {Platform} from "./hooks/usePlatforms";
 import SortSelector from "./components/SortSelector";
 import GameHeading from "./components/GameHeading";
-import Clock from "./components/Clock";
 import {useTheme} from "./components/ThemeContext";
 
 export interface GameQuery {
@@ -73,9 +72,6 @@ const App = () => {
                                 <PlatformSelector selectedPlatform={gameQuery.platform}
                                                   onSelectPlatform={onSelectPlatform}/>
                                 <SortSelector onSelectSortOder={onSelectSort} sortOrder={gameQuery.sortOrder}/>
-                                <div className="ms-auto">
-                                    <Clock/>
-                                </div>
                             </Stack>
                             <GameGrid darkMode={isDarkMode} gameQuery={gameQuery}/>
                         </Container>
