@@ -12,7 +12,7 @@ export interface Game {
     metacritic: number
 }
 
-const apiClient = new APIClient<Game>('/games');
+const apiClient = new APIClient<Game>('/games')
 
 const useGames = (gameQuery: GameQuery | null) =>
     useInfiniteQuery<FetchResponse<Game>, Error>({
@@ -23,16 +23,11 @@ const useGames = (gameQuery: GameQuery | null) =>
                 parent_platforms: gameQuery?.platformId,
                 ordering: gameQuery?.sortOrder,
                 search: gameQuery?.searchText,
-                page: pageParam,
             }
         }),
-        getNextPageParam: (lastPage, allPages) =>{
+        getNextPageParam: (lastPage, allPages) => {
             return lastPage.next ? allPages.length + 1 : undefined;
-        },
-        getPreviousPageParam: (firstPage, allPages) => {
-            return firstPage.previous ? allPages.length - 1 : undefined;
         }
-
     })
 
 export default useGames;
