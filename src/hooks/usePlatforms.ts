@@ -1,5 +1,5 @@
 import {useQuery} from "@tanstack/react-query";
-import APIClient  from "../services/api-client";
+import APIClient from "../services/api-client";
 import platforms from "../data/platforms";
 
 export interface Platform {
@@ -14,7 +14,7 @@ const usePlatforms = () => useQuery({
     queryKey: ['platforms'],
     queryFn: apiClient.getAll,
     staleTime: 84_400_000, //24hr
-    initialData: { count: platforms.length, results: platforms }
+    initialData: platforms
 })
 
 

@@ -22,6 +22,9 @@ const GameGrid = ({darkMode, gameQuery}: Props) => {
     } = useGames(gameQuery);
     const skeletons = [...Array(12)];
 
+    const fetchedGamesCount = data?.pages
+        .reduce((total, page) => total + page.results.length, 0) || 0;
+
     if (error) return <p>{error.message}</p>
     return (
         <>
@@ -43,19 +46,19 @@ const GameGrid = ({darkMode, gameQuery}: Props) => {
                         </React.Fragment>)}
                 </Row>
             </Container>
+            {hasNextPage && (
+                <Button
+                    className="btn btn-dark btn-outline-secondary text-white mt-4"
+                    onClick={() => fetchNextPage()}
+                >
+                    {isFetchingNextPage ? "Loading..." : "Load More"}
+                </Button>
+            )}
 
-                {hasNextPage &&
-
-                    <Button
-                        className="btn btn-dark btn-outline-secondary text-white mt-4"
-                        onClick={() => fetchNextPage()}
-                    >
-                        {isFetchingNextPage ? "Loading..." : "Load More"}
-                    </Button>
-                }
 
         </>
-    );
+    )
+        ;
 };
 
 export default GameGrid;
