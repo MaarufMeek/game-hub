@@ -8,10 +8,10 @@ import {useTheme} from "./ThemeContext";
 
 interface Props {
     onSelectGenre: (genre: Genre) => void;
-    selectedGenre: Genre | null;
+    selectedGenreId?: number;
 }
 
-const GenreList = ({onSelectGenre, selectedGenre}: Props) => {
+const GenreList = ({onSelectGenre, selectedGenreId}: Props) => {
     const {data, error, isLoading} = useGenres();
     const {isDarkMode} = useTheme()
 
@@ -35,7 +35,7 @@ const GenreList = ({onSelectGenre, selectedGenre}: Props) => {
                     >
                         <Stack
                             direction="horizontal"
-                            className={`gap-md-2 ${genre.id === selectedGenre?.id ?
+                            className={`gap-md-2 ${genre.id === selectedGenreId ?
                                 'genre-list-selected' : 'genre-list'}`}
                             role="button"
                             onClick={() => onSelectGenre(genre)}

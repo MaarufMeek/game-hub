@@ -11,8 +11,8 @@ import GameHeading from "./components/GameHeading";
 import {useTheme} from "./components/ThemeContext";
 
 export interface GameQuery {
-    genre: Genre | null;
-    platform: Platform | null;
+    genreId?: number;
+    platformId?: number;
     sortOrder: string;
     searchText: string;
 }
@@ -22,11 +22,11 @@ const App = () => {
     const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
 
     const OnselectGenre = (genre: Genre) => {
-        setGameQuery({...gameQuery, genre});
+        setGameQuery({...gameQuery, genreId: genre.id});
     };
 
     const onSelectPlatform = (platform: Platform) => {
-        setGameQuery({...gameQuery, platform});
+        setGameQuery({...gameQuery, platformId: platform.id});
     };
 
     const onSelectSort = (sortOrder: string) => {
@@ -54,7 +54,7 @@ const App = () => {
                         }}
                     >
                         <div style={{color: isDarkMode ? "white" : "black"}}>
-                            <GenreList selectedGenre={gameQuery.genre} onSelectGenre={OnselectGenre}/>
+                            <GenreList selectedGenreId={gameQuery.genreId} onSelectGenre={OnselectGenre}/>
                         </div>
                     </Col>
                     {/* Main Content Area */}
@@ -70,7 +70,7 @@ const App = () => {
                         <Container fluid className="d-flex flex-column align-items-start p-0">
                             <GameHeading gameQuery={gameQuery}/>
                             <Stack direction="horizontal" gap={4} className="mb-3">
-                                <PlatformSelector selectedPlatform={gameQuery.platform}
+                                <PlatformSelector selectedPlatformId={gameQuery.platformId}
                                                   onSelectPlatform={onSelectPlatform}/>
                                 <SortSelector onSelectSortOder={onSelectSort} sortOrder={gameQuery.sortOrder}/>
                             </Stack>

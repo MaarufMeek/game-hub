@@ -55,6 +55,7 @@ body {
     transition: 0.3s;
     font-size: 18px;
     padding: 0;
+    border: 1px solid #212529;
 }
 
 .list-group {
@@ -62,11 +63,12 @@ body {
 }
 
 .genre-list:hover {
-    background: rgb(40, 38, 38);
+    background: rgb(40, 44, 52);
     transition: 0.2s;
     border-radius: 10px;
     color: black;
     font-weight: bolder;
+    border: 1px solid #41464b;
 
     .img-32 {
         width: 50px;
@@ -76,12 +78,14 @@ body {
 }
 
 .genre-list-selected {
-    background: rgb(47, 47, 47);
+    background: rgb(40, 44, 52);
     transition: 0.2s;
     border-radius: 10px;
     color: black;
     font-weight: bolder;
     font-size: 24px;
+    border: 1px solid #41464b;
+
 
     .img-32 {
         width: 50px;

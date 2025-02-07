@@ -5,6 +5,7 @@ import GameCardSkeleton from "./GameCardSkeleton";
 import {GameQuery} from "../App";
 import React from "react";
 
+
 interface Props {
     darkMode: boolean;
     gameQuery: GameQuery | null;
@@ -46,24 +47,24 @@ const GameGrid = ({darkMode, gameQuery}: Props) => {
                 </Row>
             </Container>
             <Container className="mt-4">
-            {hasPreviousPage &&
-                <Button
-                    className="btn btn-dark btn-outline-secondary text-white"
-                    onClick={() => fetchPreviousPage()}
-                >
-                    {isFetchingPreviousPage ? "Loading..." : "Load Less"}
-                </Button>
-            }
+                {hasPreviousPage &&
+                    <Button
+                        className="btn btn-dark btn-outline-secondary text-white"
+                        onClick={() => fetchPreviousPage()}
+                    >
+                        {isFetchingPreviousPage ? "Loading..." : "Load Less"}
+                    </Button>
+                }
 
-            {hasNextPage &&
+                {hasNextPage &&
 
-                <Button
-                    className="btn btn-dark btn-outline-secondary text-white"
-                    onClick={() => fetchNextPage()}
-                >
-                    {isFetchingNextPage ? "Loading..." : "Load More"}
-                </Button>
-            }
+                    <Button
+                        className="btn btn-dark btn-outline-secondary text-white"
+                        onClick={() => fetchNextPage()}
+                    >
+                        {isFetchingNextPage ? "Loading..." : "Load More"}
+                    </Button>
+                }
 
             </Container>
         </>
