@@ -13,11 +13,12 @@ const PlatformSelector = ({onSelectPlatform, selectedPlatform}: Props) => {
     return (
         <Dropdown>
             <Dropdown.Toggle
-                className="fw-bold"
-                variant="success">{selectedPlatform?.name || "Platforms"}
+                className="fw-bold text-white"
+                variant="outline-secondary">
+                {selectedPlatform?.name || "Platforms"}
             </Dropdown.Toggle>
             <Dropdown.Menu>
-                {data.map(platform =>
+                {data?.results.map(platform =>
                     <Dropdown.Item key={platform.id}
                                    role="button"
                                    onClick={() => onSelectPlatform(platform)}

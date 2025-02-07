@@ -28,7 +28,7 @@ const GenreList = ({onSelectGenre, selectedGenre}: Props) => {
                         <GenreCardSkeleton/>
                     </ListGroupItem>
                 ))}
-                {data.map((genre, index) => (
+                {data?.results.map((genre, index) => (
                     <ListGroupItem key={genre.id || index}
                                    as="li"
                                    className={`p-0 border-0 my-1 ${isDarkMode ? '' : 'list-group'}`}
@@ -39,7 +39,7 @@ const GenreList = ({onSelectGenre, selectedGenre}: Props) => {
                                 'genre-list-selected' : 'genre-list'}`}
                             role="button"
                             onClick={() => onSelectGenre(genre)}
-                            style={{color: isDarkMode ? '#c9b21a' : 'black'}}
+                            style={{color: isDarkMode ? 'white' : 'black'}}
                         >
                             <Image src={getCroppedImageUrl(genre.image_background)} className="img-32 rounded"/>
                             {genre.name}

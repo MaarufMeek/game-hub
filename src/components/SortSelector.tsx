@@ -22,8 +22,8 @@ const SortSelector = ({onSelectSortOder, sortOrder}: Props) => {
     return (
         <Dropdown className="mx-2 my-3">
             <Dropdown.Toggle
-                className="fw-bold"
-                variant="success">
+                className="fw-bold text-white"
+                variant="outline-secondary">
                 {/*{selectedPlatform?.name || "Platforms"}*/}
                 Order by: {currentSortOrderLabel}
             </Dropdown.Toggle>
