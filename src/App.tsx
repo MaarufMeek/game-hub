@@ -45,6 +45,7 @@ const App = () => {
                     {/*Aside*/}
                     <Col
                         lg={2}
+                        md={2}
                         className="p-4 text-white d-none d-lg-block"
                         style={{
                             backgroundColor: isDarkMode ? "" : "#e6f8eb",
